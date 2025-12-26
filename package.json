@@ -1,0 +1,32 @@
+{
+  "name": "max-studoliak-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "author": "Max Studoliak <studolakmaksim8@gmail.com>",
+  "description": "Professional portfolio website showcasing my work as a Frontend Developer",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/icons-material": "^7.3.6",
+    "@mui/material": "^7.3.6",
+    "@mui/material-nextjs": "^7.3.6",
+    "framer-motion": "^12.23.26",
+    "next": "^15.1.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "^15.1.0",
+    "typescript": "^5"
+  }
+}
