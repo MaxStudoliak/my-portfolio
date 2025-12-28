@@ -18,6 +18,7 @@ import {
 import { Brightness4, Brightness7, Language, Menu as MenuIcon, Close } from '@mui/icons-material';
 import { useThemeContext } from '@/components/ThemeRegistry';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { ShareButton } from '@/components/ui';
 
 const GRADIENT = {
   dark: 'linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%)',
@@ -123,10 +124,15 @@ export default function Header() {
               ))}
             </Box>
 
+            {/* Share Button */}
+            <Box sx={{ display: { xs: 'none', sm: 'flex' }, ml: 2 }}>
+              <ShareButton />
+            </Box>
+
             {/* Language Toggle */}
             <IconButton
               onClick={toggleLanguage}
-              sx={{ ...iconButtonStyles, display: { xs: 'none', sm: 'flex' }, ml: 2 }}
+              sx={{ ...iconButtonStyles, display: { xs: 'none', sm: 'flex' } }}
               title={locale === 'en' ? 'Українська' : 'English'}
             >
               <Language />
@@ -218,6 +224,8 @@ export default function Header() {
           </List>
 
           <Box sx={{ mt: 3, display: 'flex', gap: 1, justifyContent: 'center' }}>
+            <ShareButton />
+
             <IconButton onClick={toggleLanguage} sx={iconButtonStyles}>
               <Language />
               <Typography variant="caption" sx={{ ml: 0.5, fontSize: '0.7rem', fontWeight: 600 }}>

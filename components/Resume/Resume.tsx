@@ -4,13 +4,38 @@ import { Box, Container, Typography, Button, Divider, Chip } from '@mui/material
 import { Download, Print, Close } from '@mui/icons-material';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useRouter } from 'next/navigation';
+import { useRef, useState } from 'react';
 
 export default function Resume() {
   const { t, locale } = useLanguage();
   const router = useRouter();
+  const resumeRef = useRef<HTMLDivElement>(null);
+  const [isGenerating, setIsGenerating] = useState(false);
 
-  const handlePrint = () => {
-    window.print();
+  const handlePrint = async () => {
+    if (!resumeRef.current || isGenerating) return;
+    if (typeof window === 'undefined') return;
+
+    setIsGenerating(true);
+    try {
+      const html2pdfModule = await import('html2pdf.js');
+      const html2pdf = html2pdfModule.default || html2pdfModule;
+
+      const opt = {
+        margin: 10,
+        filename: `${t.footer.name.replace(/\s+/g, '_')}_Resume.pdf`,
+        image: { type: 'jpeg' as const, quality: 0.98 },
+        html2canvas: { scale: 2, useCORS: true },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' as const },
+      };
+
+      await html2pdf().set(opt).from(resumeRef.current).save();
+    } catch (error) {
+      console.error('Error generating PDF:', error);
+      window.print();
+    } finally {
+      setIsGenerating(false);
+    }
   };
 
   const handleClose = () => {
@@ -50,14 +75,25 @@ export default function Resume() {
         </Button>
         <Button
           variant="contained"
-          startIcon={<Print />}
+          startIcon={<Download />}
           onClick={handlePrint}
+          disabled={isGenerating}
           sx={{
             background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
             color: 'white',
+            '&:disabled': {
+              background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+              opacity: 0.6,
+            },
           }}
         >
-          {locale === 'uk' ? 'Зберегти PDF' : 'Save as PDF'}
+          {isGenerating
+            ? locale === 'uk'
+              ? 'Генерація...'
+              : 'Generating...'
+            : locale === 'uk'
+              ? 'Зберегти PDF'
+              : 'Save as PDF'}
         </Button>
       </Box>
 
@@ -73,6 +109,7 @@ export default function Resume() {
         }}
       >
         <Box
+          ref={resumeRef}
           sx={{
             bgcolor: 'background.paper',
             p: { xs: 3, md: 6 },

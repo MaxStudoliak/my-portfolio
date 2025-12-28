@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useState, ReactNode } from 'react';
+import { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 import { translations, Locale } from '@/locales/translations';
 
 interface LanguageContextType {
@@ -11,8 +11,32 @@ interface LanguageContextType {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
+const LOCALE_STORAGE_KEY = 'portfolio-language';
+
+// Get saved locale from localStorage or default to English
+const getSavedLocale = (): Locale => {
+  if (typeof window === 'undefined') return 'en';
+
+  const saved = localStorage.getItem(LOCALE_STORAGE_KEY);
+  return (saved === 'uk' || saved === 'en') ? saved : 'en';
+};
+
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocale] = useState<Locale>('uk'); // Default to Ukrainian
+  const [locale, setLocaleState] = useState<Locale>('en'); // Default to English
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    const savedLocale = getSavedLocale();
+    setLocaleState(savedLocale);
+  }, []);
+
+  const setLocale = (newLocale: Locale) => {
+    setLocaleState(newLocale);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem(LOCALE_STORAGE_KEY, newLocale);
+    }
+  };
 
   const t = translations[locale];
 

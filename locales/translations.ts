@@ -89,6 +89,12 @@ export const translations = {
             rights: 'All rights reserved',
             builtWith: 'Built with',
         },
+        share: {
+            title: 'Share via',
+            copyLink: 'Copy Link',
+            linkCopied: 'Link copied to clipboard!',
+            instagramCopied: 'Link copied! Paste it in your Instagram story or bio',
+        },
     },
     uk: {
         nav: {
@@ -180,6 +186,12 @@ export const translations = {
             name: 'Максим Студоляк',
             rights: 'Всі права захищені',
             builtWith: 'Створено за допомогою',
+        },
+        share: {
+            title: 'Поділитися через',
+            copyLink: 'Скопіювати посилання',
+            linkCopied: 'Посилання скопійовано!',
+            instagramCopied: 'Посилання скопійовано! Вставте його в свою історію або био Instagram',
         },
     },
 };
