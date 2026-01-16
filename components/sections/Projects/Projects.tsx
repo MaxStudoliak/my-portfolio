@@ -22,30 +22,51 @@ export default function Projects() {
       title: t.projects.projectOne,
       description: t.projects.projectOneDesc,
       technologies: ['React', 'TypeScript', 'Material UI'],
-      github: '#',
-      demo: '#',
+      github: null,
+      demo: null,
     },
     {
       title: t.projects.projectTwo,
       description: t.projects.projectTwoDesc,
       technologies: ['React', 'TypeScript', 'Ionic'],
-      github: '#',
-      demo: '#',
+      github: null,
+      demo: null,
     },
     {
       title: t.projects.projectThree,
       description: t.projects.projectThreeDesc,
       technologies: ['React', 'TypeScript', 'Material UI'],
-      github: '#',
-      demo: '#',
+      github: null,
+      demo: null,
+    },
+    {
+      title: t.projects.projectFour,
+      description: t.projects.projectFourDesc,
+      technologies: ['React', 'TypeScript', 'Material-UI', 'Node.js', 'Express', 'PostgreSQL', 'AI'],
+      github: null,
+      demo: 'https://finance-tracker-frontend-sigma.vercel.app',
+    },
+    {
+      title: t.projects.projectFive,
+      description: t.projects.projectFiveDesc,
+      technologies: ['React', 'TypeScript', 'Tailwind', 'Socket.io', 'Express', 'PostgreSQL'],
+      github: 'https://github.com/MaxStudoliak/task-flow',
+      demo: 'https://task-flow-frontend-kappa-sandy.vercel.app',
+    },
+    {
+      title: t.projects.projectSix,
+      description: t.projects.projectSixDesc,
+      technologies: ['Next.js', 'TypeScript', 'Tailwind', 'Stripe', 'Express', 'PostgreSQL'],
+      github: 'https://github.com/MaxStudoliak/shop-hub',
+      demo: null,
     },
   ];
 
   return (
-    <Box id="projects" sx={{ py: { xs: 6, md: 10 }, bgcolor: 'background.default' }}>
+    <Box id="projects" sx={{ py: { xs: 4, md: 10 }, bgcolor: 'background.default' }}>
       <Container maxWidth="lg">
         <ScrollReveal>
-          <Typography variant="h2" sx={{ textAlign: 'center', mb: 6, fontSize: { xs: '2rem', md: '2.5rem' } }}>
+          <Typography variant="h2" sx={{ textAlign: 'center', mb: { xs: 4, md: 6 }, fontSize: { xs: '1.75rem', md: '2.5rem' } }}>
             {t.projects.title}
           </Typography>
         </ScrollReveal>
@@ -53,8 +74,8 @@ export default function Projects() {
         <Box
           sx={{
             display: 'grid',
-            gridTemplateColumns: { xs: '1fr', md: 'repeat(3, 1fr)' },
-            gap: 4,
+            gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' },
+            gap: { xs: 2, sm: 2.5, md: 3 },
           }}
         >
           {projects.map((project, index) => (
@@ -70,29 +91,70 @@ export default function Projects() {
                   },
                 }}
               >
-                <CardContent sx={{ flexGrow: 1 }}>
-                  <Typography variant="h5" component="h3" gutterBottom>
+                <CardContent sx={{ flexGrow: 1, p: { xs: 2, md: 2.5 }, pb: { xs: 1, md: 1.5 } }}>
+                  <Typography
+                    variant="h5"
+                    component="h3"
+                    gutterBottom
+                    sx={{
+                      fontSize: { xs: '1.15rem', md: '1.5rem' },
+                      mb: { xs: 1, md: 1.5 },
+                      fontWeight: 600
+                    }}
+                  >
                     {project.title}
                   </Typography>
                   <Typography
                     variant="body2"
                     color="text.secondary"
-                    paragraph
-                    sx={{ mb: 2 }}
+                    sx={{
+                      mb: { xs: 1.5, md: 2 },
+                      fontSize: { xs: '0.875rem', md: '0.875rem' },
+                      lineHeight: 1.6,
+                      minHeight: { xs: 'auto', sm: '80px', md: '90px' }
+                    }}
                   >
                     {project.description}
                   </Typography>
-                  <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+                  <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: { xs: 0.75, md: 1 } }}>
                     {project.technologies.map((tech, techIndex) => (
                       <Chip
                         key={techIndex}
                         label={tech}
                         size="small"
                         variant="outlined"
+                        sx={{
+                          fontSize: { xs: '0.7rem', md: '0.75rem' },
+                          height: { xs: '24px', md: '26px' }
+                        }}
                       />
                     ))}
                   </Box>
                 </CardContent>
+                <CardActions sx={{ px: { xs: 2, md: 2.5 }, pb: { xs: 2, md: 2 }, pt: 0, gap: 1 }}>
+                  {project.github && (
+                    <Button
+                      size="small"
+                      startIcon={<GitHub />}
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {t.projects.code}
+                    </Button>
+                  )}
+                  {project.demo && (
+                    <Button
+                      size="small"
+                      startIcon={<Launch />}
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {t.projects.demo}
+                    </Button>
+                  )}
+                </CardActions>
               </Card>
             </ScrollReveal>
           ))}

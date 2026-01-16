@@ -54,6 +54,15 @@ export const translations = {
             projectThree: 'Portfolio Website',
             projectThreeDesc:
                 "This site you're looking at right now. React, TypeScript, Material UI. Dark theme, language switcher, animations, responsive.",
+            projectFour: 'Finance Tracker',
+            projectFourDesc:
+                'Personal finance management system with AI-powered insights, budgeting, goal tracking, and multi-language support. JWT authentication with Google OAuth.',
+            projectFive: 'TaskFlow',
+            projectFiveDesc:
+                'Modern task management system with drag-and-drop Kanban boards, real-time updates via WebSocket, and team collaboration features.',
+            projectSix: 'Shop-Hub',
+            projectSixDesc:
+                'E-commerce platform with admin panel, Stripe payment integration, product reviews, multi-language support, and Cloudinary image storage.',
             code: 'Code',
             demo: 'Demo',
         },
@@ -152,6 +161,15 @@ export const translations = {
             projectThree: 'Сайт-портфоліо',
             projectThreeDesc:
                 'Цей сайт, який ви зараз дивитесь. React, TypeScript, Material UI. Темна тема, перемикач мови, анімації, адаптивність.',
+            projectFour: 'Finance Tracker',
+            projectFourDesc:
+                'Система управління особистими фінансами з AI-аналізом, бюджетуванням, відстеженням цілей та підтримкою багатьох мов. JWT автентифікація з Google OAuth.',
+            projectFive: 'TaskFlow',
+            projectFiveDesc:
+                'Сучасна система управління завданнями з drag-and-drop Kanban дошками, оновленнями в реальному часі через WebSocket та функціями командної роботи.',
+            projectSix: 'Shop-Hub',
+            projectSixDesc:
+                'E-commerce платформа з адмін панеллю, інтеграцією Stripe платежів, відгуками на товари, підтримкою багатьох мов та зберіганням зображень на Cloudinary.',
             code: 'Код',
             demo: 'Демо',
         },
