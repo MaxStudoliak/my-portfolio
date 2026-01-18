@@ -58,7 +58,7 @@ export default function Projects() {
       description: t.projects.projectSixDesc,
       technologies: ['Next.js', 'TypeScript', 'Tailwind', 'Stripe', 'Express', 'PostgreSQL'],
       github: 'https://github.com/MaxStudoliak/shop-hub',
-      demo: null,
+      demo: 'https://shop-hub-frontend-omega.vercel.app',
     },
   ];
 
