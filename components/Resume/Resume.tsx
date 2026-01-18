@@ -312,8 +312,11 @@ export default function Resume() {
               <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
                 {t.projects.projectOne}
               </Typography>
-              <Typography variant="body2" sx={{ lineHeight: 1.8 }}>
+              <Typography variant="body2" sx={{ lineHeight: 1.8, mb: 0.5 }}>
                 {t.projects.projectOneDesc}
+              </Typography>
+              <Typography variant="caption" color="text.secondary">
+                React, TypeScript, Material UI
               </Typography>
             </Box>
 
@@ -321,17 +324,59 @@ export default function Resume() {
               <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
                 {t.projects.projectTwo}
               </Typography>
-              <Typography variant="body2" sx={{ lineHeight: 1.8 }}>
+              <Typography variant="body2" sx={{ lineHeight: 1.8, mb: 0.5 }}>
                 {t.projects.projectTwoDesc}
+              </Typography>
+              <Typography variant="caption" color="text.secondary">
+                React, TypeScript, Ionic
+              </Typography>
+            </Box>
+
+            <Box sx={{ mb: 2 }}>
+              <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
+                {t.projects.projectThree}
+              </Typography>
+              <Typography variant="body2" sx={{ lineHeight: 1.8, mb: 0.5 }}>
+                {t.projects.projectThreeDesc}
+              </Typography>
+              <Typography variant="caption" color="text.secondary">
+                Next.js, TypeScript, Material UI
+              </Typography>
+            </Box>
+
+            <Box sx={{ mb: 2 }}>
+              <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
+                {t.projects.projectFour}
+              </Typography>
+              <Typography variant="body2" sx={{ lineHeight: 1.8, mb: 0.5 }}>
+                {t.projects.projectFourDesc}
+              </Typography>
+              <Typography variant="caption" color="text.secondary">
+                React, TypeScript, Material-UI, Node.js, Express, PostgreSQL, AI
+              </Typography>
+            </Box>
+
+            <Box sx={{ mb: 2 }}>
+              <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
+                {t.projects.projectFive}
+              </Typography>
+              <Typography variant="body2" sx={{ lineHeight: 1.8, mb: 0.5 }}>
+                {t.projects.projectFiveDesc}
+              </Typography>
+              <Typography variant="caption" color="text.secondary">
+                React, TypeScript, Tailwind CSS, Socket.io, Express, PostgreSQL
               </Typography>
             </Box>
 
             <Box>
               <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
-                {t.projects.projectThree}
+                {t.projects.projectSix}
               </Typography>
-              <Typography variant="body2" sx={{ lineHeight: 1.8 }}>
-                {t.projects.projectThreeDesc}
+              <Typography variant="body2" sx={{ lineHeight: 1.8, mb: 0.5 }}>
+                {t.projects.projectSixDesc}
+              </Typography>
+              <Typography variant="caption" color="text.secondary">
+                Next.js, TypeScript, Tailwind CSS, Stripe, Express, PostgreSQL
               </Typography>
             </Box>
           </Box>
