@@ -24,6 +24,7 @@ export default function Experience() {
         t.experience.jobAchievement1,
         t.experience.jobAchievement2,
         t.experience.jobAchievement3,
+        t.experience.jobAchievement4,
       ],
     },
     {

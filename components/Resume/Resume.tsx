@@ -1,7 +1,7 @@
 'use client';
 
 import { Box, Container, Typography, Button, Divider, Chip } from '@mui/material';
-import { Download, Print, Close } from '@mui/icons-material';
+import { Download, Close } from '@mui/icons-material';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useRouter } from 'next/navigation';
 import { useRef, useState } from 'react';
@@ -42,15 +42,28 @@ export default function Resume() {
     router.push('/');
   };
 
-  const skills = {
-    core: ['JavaScript', 'TypeScript', 'HTML/CSS'],
-    frameworks: ['React', 'Material UI', 'Ionic', 'Next.js'],
-    tools: ['GitHub', 'Figma', 'ToggleTrack'],
-  };
+  const skillCategories = [
+    {
+      category: t.skills.frontend,
+      skills: ['JavaScript', 'TypeScript', 'HTML/CSS', 'React', 'Next.js', 'Material UI', 'Ionic'],
+    },
+    {
+      category: t.skills.tools,
+      skills: ['GitHub', 'Figma', 'VS Code', 'ToggleTrack', 'Vercel', 'Railway'],
+    },
+    {
+      category: t.skills.soft,
+      skills: [t.skills.teamCollaboration, t.skills.agileScrum, t.skills.problemSolving],
+    },
+    {
+      category: t.skills.automation,
+      skills: ['Make.com', 'Google Gemini', 'Anthropic Claude', 'Grok', 'Airtable', 'n8n'],
+    },
+  ];
 
   return (
     <>
-      {/* Print/Download buttons - hidden when printing */}
+      {/* Print/Download buttons */}
       <Box
         className="no-print"
         sx={{
@@ -158,15 +171,9 @@ export default function Resume() {
               {t.contact.title}
             </Typography>
             <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2 }}>
-              <Typography variant="body2">
-                📧 studolakmaksim8@gmail.com
-              </Typography>
-              <Typography variant="body2">
-                📱 +380 (93) 225-43-20
-              </Typography>
-              <Typography variant="body2">
-                📍 {t.contact.city}
-              </Typography>
+              <Typography variant="body2">📧 studolakmaksim8@gmail.com</Typography>
+              <Typography variant="body2">📱 +380 (93) 225-43-20</Typography>
+              <Typography variant="body2">📍 {t.contact.city}</Typography>
             </Box>
           </Box>
 
@@ -178,6 +185,7 @@ export default function Resume() {
               {t.about.title}
             </Typography>
             <Typography variant="body2" sx={{ lineHeight: 1.8 }}>
+              {t.about.subtitle}
               {t.about.description}
             </Typography>
           </Box>
@@ -211,6 +219,9 @@ export default function Resume() {
                 <Typography component="li" variant="body2" sx={{ mb: 0.5 }}>
                   {t.experience.jobAchievement3}
                 </Typography>
+                <Typography component="li" variant="body2" sx={{ mb: 0.5 }}>
+                  {t.experience.jobAchievement4}
+                </Typography>
               </Box>
             </Box>
 
@@ -230,79 +241,40 @@ export default function Resume() {
 
           <Divider sx={{ my: 3 }} />
 
-          {/* Skills */}
+          {/* Skills - точно как на сайте */}
           <Box sx={{ mb: 4 }}>
             <Typography variant="h6" sx={{ fontWeight: 600, mb: 2 }}>
               {t.skills.title}
             </Typography>
 
-            <Box sx={{ mb: 2 }}>
-              <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 1 }}>
-                {t.skills.core}
-              </Typography>
-              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
-                {skills.core.map((skill) => (
-                  <Chip
-                    key={skill}
-                    label={skill}
-                    size="small"
-                    sx={{
-                      '@media print': {
-                        border: '1px solid #667eea',
-                        backgroundColor: 'transparent',
-                      },
-                    }}
-                  />
-                ))}
+            {skillCategories.map((category, index) => (
+              <Box key={index} sx={{ mb: 2 }}>
+                <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 1 }}>
+                  {category.category}
+                </Typography>
+                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+                  {category.skills.map((skill) => (
+                    <Chip
+                      key={skill}
+                      label={skill}
+                      size="small"
+                      color={category.category === t.skills.automation ? 'secondary' : 'primary'}
+                      sx={{
+                        '@media print': {
+                          border: `1px solid ${category.category === t.skills.automation ? '#764ba2' : '#667eea'}`,
+                          backgroundColor: 'transparent',
+                        },
+                      }}
+                    />
+                  ))}
+                </Box>
               </Box>
-            </Box>
-
-            <Box sx={{ mb: 2 }}>
-              <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 1 }}>
-                {t.skills.frameworks}
-              </Typography>
-              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
-                {skills.frameworks.map((skill) => (
-                  <Chip
-                    key={skill}
-                    label={skill}
-                    size="small"
-                    sx={{
-                      '@media print': {
-                        border: '1px solid #667eea',
-                        backgroundColor: 'transparent',
-                      },
-                    }}
-                  />
-                ))}
-              </Box>
-            </Box>
-
-            <Box>
-              <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 1 }}>
-                {t.skills.tools}
-              </Typography>
-              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
-                {skills.tools.map((skill) => (
-                  <Chip
-                    key={skill}
-                    label={skill}
-                    size="small"
-                    sx={{
-                      '@media print': {
-                        border: '1px solid #667eea',
-                        backgroundColor: 'transparent',
-                      },
-                    }}
-                  />
-                ))}
-              </Box>
-            </Box>
+            ))}
           </Box>
 
           <Divider sx={{ my: 3 }} />
 
-          {/* Projects */}
+          {/* Frontend Projects - ВСЕ 6 проектов */}
           <Box sx={{ mb: 4 }}>
             <Typography variant="h6" sx={{ fontWeight: 600, mb: 2 }}>
               {t.projects.title}
@@ -340,7 +312,7 @@ export default function Resume() {
                 {t.projects.projectThreeDesc}
               </Typography>
               <Typography variant="caption" color="text.secondary">
-                Next.js, TypeScript, Material UI
+                React, TypeScript, Material UI
               </Typography>
             </Box>
 
@@ -364,11 +336,11 @@ export default function Resume() {
                 {t.projects.projectFiveDesc}
               </Typography>
               <Typography variant="caption" color="text.secondary">
-                React, TypeScript, Tailwind CSS, Socket.io, Express, PostgreSQL
+                React, TypeScript, Tailwind, Socket.io, Express, PostgreSQL
               </Typography>
             </Box>
 
-            <Box>
+            <Box sx={{ mb: 2 }}>
               <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
                 {t.projects.projectSix}
               </Typography>
@@ -376,7 +348,52 @@ export default function Resume() {
                 {t.projects.projectSixDesc}
               </Typography>
               <Typography variant="caption" color="text.secondary">
-                Next.js, TypeScript, Tailwind CSS, Stripe, Express, PostgreSQL
+                Next.js, TypeScript, Tailwind, Stripe, Express, PostgreSQL
+              </Typography>
+            </Box>
+          </Box>
+
+          <Divider sx={{ my: 3 }} />
+
+          {/* AI Automation Projects - ВСЕ 3 проекта */}
+          <Box sx={{ mb: 4 }}>
+            <Typography variant="h6" sx={{ fontWeight: 600, mb: 2 }}>
+              {locale === 'uk' ? 'Проєкти AI Автоматизації' : 'AI Automation Projects'}
+            </Typography>
+
+            <Box sx={{ mb: 2 }}>
+              <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
+                {t.projects.automationOne}
+              </Typography>
+              <Typography variant="body2" sx={{ lineHeight: 1.8, mb: 0.5 }}>
+                {t.projects.automationOneDesc}
+              </Typography>
+              <Typography variant="caption" color="text.secondary">
+                Make.com, Tally, Airtable, Router, Text Parser, Slack, Gmail
+              </Typography>
+            </Box>
+
+            <Box sx={{ mb: 2 }}>
+              <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
+                {t.projects.automationTwo}
+              </Typography>
+              <Typography variant="body2" sx={{ lineHeight: 1.8, mb: 0.5 }}>
+                {t.projects.automationTwoDesc}
+              </Typography>
+              <Typography variant="caption" color="text.secondary">
+                Make.com, Tally, Airtable, Google Gemini, JSON, Router, Slack, Gmail
+              </Typography>
+            </Box>
+
+            <Box>
+              <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
+                {t.projects.automationThree}
+              </Typography>
+              <Typography variant="body2" sx={{ lineHeight: 1.8, mb: 0.5 }}>
+                {t.projects.automationThreeDesc}
+              </Typography>
+              <Typography variant="caption" color="text.secondary">
+                Make.com, Gmail, OpenAI, JSON, Tools, Router, Google Gemini, Airtable
               </Typography>
             </Box>
           </Box>

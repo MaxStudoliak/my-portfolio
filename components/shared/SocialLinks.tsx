@@ -25,7 +25,7 @@ export default function SocialLinks({ iconColor, iconSx, containerSx }: SocialLi
     },
     {
       icon: <DjinniIcon />,
-      url: 'https://djinni.co/my/wizard/profile/',
+      url: 'https://djinni.co/q/3a938d78f0/',
       label: 'Djinni',
     },
     {

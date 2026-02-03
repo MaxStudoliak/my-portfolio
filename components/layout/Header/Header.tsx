@@ -90,7 +90,7 @@ export default function Header() {
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
-                fontSize: { xs: '1rem', sm: '1.2rem', md: '1.5rem' },
+                fontSize: { xs: '1rem', sm: '1rem', md: '1rem' },
               }}
             >
               {t.hero.title}
